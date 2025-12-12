@@ -1,0 +1,22 @@
+{
+  "name": "React-TS-Supabase-Book-Tracker",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:22",
+  
+  // ✅ 1. ワークスペースをプロジェクトルートに設定し直す
+  "workspaceFolder": "/workspaces/book-tracker-app", 
+  
+  // ✅ 2. コンテナ初期化後に必要なファイルを移動し、npm installを実行
+  // 依存関係は book-tracker-fe 内にインストールする必要があるため、chownのパスも修正
+  "postCreateCommand": "sudo chown -R node:node /workspaces/book-tracker-app && npm install --prefix book-tracker-fe",
+
+  "customizations": {
+    "vscode": {
+      "settings": {
+        // ターミナルのカレントディレクトリ設定はそのまま
+        "terminal.integrated.cwd": "${workspaceFolder}/book-tracker-fe" 
+      }
+    }
+  },
+  
+  "forwardPorts": [5173]
+}
